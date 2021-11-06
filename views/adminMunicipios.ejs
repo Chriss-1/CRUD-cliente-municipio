@@ -1,0 +1,54 @@
+<%- include('./layout/head.ejs',{Title:"AdminMunicipios"}) %>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2>Administracion de <b>Municipios</b></h2>
+                        </div>
+                        <div class="col-sm-7">
+                            <a href="agregarMunicipio" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Agregar</span></a>						
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Municipio</th>
+                            <th>Departamento</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let municipio = 0; municipio < datosMunicipio.length; municipio++ ) { %>
+                            <tr>
+                                <td><%= datosMunicipio[municipio].idMunicipio%></td>
+                                <td><%= datosMunicipio[municipio].nombreMunicipio%></td>
+                                <td><%= datosMunicipio[municipio].nombreDepartamento%></td>
+                                <td>
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-6">
+                                            <form method="get" action="editarMunicipio/<%= datosMunicipio[municipio].idMunicipio%>">
+                                                <button style="border: none; background-color: transparent;" type="submit" title="Editar" data-toggle="tooltip"><i style="color: dodgerblue;" class="material-icons">&#xE8B8;</i></button>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form method="post" action="eliminarMunicipio/<%= datosMunicipio[municipio].idMunicipio%>">
+                                                <button style="border: none; background-color: transparent;" type="submit" title="Eliminar" data-toggle="tooltip"><i style="color: red;" class="material-icons">&#xE5C9;</i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="/" class="btn btn-primary">Inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>   
+<%- include('./layout/foot.ejs') %>

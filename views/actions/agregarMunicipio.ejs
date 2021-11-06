@@ -1,0 +1,27 @@
+<%- include('../layout/head.ejs',{Title:"agregarMunicipio"}) %>
+<div class="container" style="width: 50%;">
+    <div style="margin-top: 30px;">
+        <h1>Agregar un nuevo Municipio</h1>
+        <hr>
+    </div>
+    <form method="post" action="agregarMunicipio">
+        <div class="mb-3">
+            <label for="nombreMunicipio" class="form-label">Municipio</label>
+            <input type="text" class="form-control" id="nombreMunicipio" placeholder="Nombre del Municipio" name="nombreMunicipio">
+          </div>
+          <div>
+            <label for="nombreDepartamento" class="form-label">Departamento</label>
+            <select name="idDepartamento" class="form-select" aria-label="Default select example">
+                <option selected>Seleccione un Departamento</option>
+            <% for( let departamento = 0; departamento < datosDepartamento.length; departamento++ ) { %>
+                    <option value="<%=datosDepartamento[departamento].idDepartamento%>"><%=datosDepartamento[departamento].nombreDepartamento%></option>
+            <% } %>
+            </select>
+          </div>
+          <div class="col-12" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            <a href="adminMunicipios" class="btn btn-danger">Cancelar</a>
+          </div>
+    </form>
+</div>
+<%- include('../layout/foot.ejs') %>

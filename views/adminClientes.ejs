@@ -1,0 +1,60 @@
+<%- include('./layout/head.ejs',{Title:"AdminClientes"}) %>
+    <div class="container-xl">
+        <div class="table-responsive">
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h2>Administracion de <b>Clientes</b></h2>
+                        </div>
+                        <div class="col-sm-7">
+                            <a href="agregarCliente" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Agregar</span></a>						
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>Cliente</th>
+                            <th>Identidad</th>
+                            <th>Email</th>
+                            <th>Telefono</th>
+                            <th>Municipio</th>
+                            <th class="text-center">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let cliente = 0; cliente < datosCliente.length; cliente++ ) { %>
+                            <tr>
+                                <td><%= datosCliente[cliente].idCliente%></td>
+                                <td><%= datosCliente[cliente].nombreCliente%></td>
+                                <td><%= datosCliente[cliente].identidad%></td>
+                                <td><%= datosCliente[cliente].email%></td>
+                                <td><%= datosCliente[cliente].telefono%></td>
+                                <td><%= datosCliente[cliente].nombreMunicipio%></td>
+                                <td>
+                                    <div class="row justify-content-center">
+                                        <div class="col-sm-6">
+                                            <form method="get" action="editarCliente/<%= datosCliente[cliente].idCliente%>">
+                                                <button style="border: none; background-color: transparent;" type="submit" title="Editar" data-toggle="tooltip"><i style="color: dodgerblue;" class="material-icons">&#xE8B8;</i></button>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <form method="post" action="eliminarCliente/<%= datosCliente[cliente].idCliente%>">
+                                                <button style="border: none; background-color: transparent;" type="submit" title="Eliminar" data-toggle="tooltip"><i style="color: red;" class="material-icons">&#xE5C9;</i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="/" class="btn btn-primary">Inicio</a>
+                </div>
+            </div>
+        </div>
+    </div>   
+<%- include('./layout/foot.ejs') %>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>editarCliente</title>
+
+    <link rel="stylesheet" href="../../bootstrap/bootstrap.min.css">
+
+
+    <script src="../../js/jquery-3.5.1.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
+</head>
+<body>
+    <div class="container" style="width: 50%;">
+        <div style="margin-top: 30px;">
+            <h1>Editrar Municipio</h1>
+            <hr>
+        </div>
+        <form method="post" action="editarCliente">
+            <input type="text" style="display: none;" value="<%=datosCliente[0].idCliente%>" class="form-control" id="idCliente" name="idCliente">
+            <div class="row">
+                <div class="col-6">
+                    <label for="nombreCliente" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombreCliente" value="<%=datosCliente[0].primerNombreCliente%>" name="nombreCliente">
+                </div>
+                <div class="col-6">
+                    <label for="apellidoCliente" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellidoCliente" value="<%=datosCliente[0].primerApellidoCliente%>" name="apellidoCliente">
+                </div>
+            </div>
+    
+            <div>
+                <label for="emailCliente" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="emailCliente" value="<%=datosCliente[0].email%>" name="emailCliente">
+            </div>
+    
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" style="display: none;" value="<%=datosCliente[0].identidad%>" class="form-control" id="identidadCliente" name="identidadCliente">
+                    <label for="identidadCliente" class="form-label">Numero de identidad</label>
+                    <input disabled type="number" class="form-control" value="<%=datosCliente[0].identidad%>">
+                </div>
+                <div class="col-6">
+                    <label for="telefonoCliente" class="form-label">Telefono</label>
+                    <input oninput="if(value.length>8)value=value.slice(0,8)" type="number" class="form-control" id="telefonoCliente" value="<%=datosCliente[0].telefono%>" name="telefonoCliente">
+                </div>
+            </div>
+    
+            <div class="input-group" style="margin-top: 10px;">
+                <span class="input-group-text">Direccion del cliente</span>
+                <textarea name="direccionCliente" id="direccionCliente" cols="72" rows="5"><%=datosCliente[0].direccion%></textarea>
+            </div>
+
+            <div>
+                <label for="nombreMunicipio" class="form-label">Municipio</label>
+                <select name="idMunicipio" class="form-select" aria-label="Default select example">
+                    <option selected value="<%=datosCliente[0].municipio%>"><%=datosCliente[0].nombreMunicipio%></option>
+                <% for( let municipio = 0; municipio < datosMunicipio.length; municipio++ ) { 
+                    if (datosMunicipio[municipio].idMunicipio != datosCliente[0].municipio) {
+                    %>
+                        <option value="<%=datosMunicipio[municipio].idMunicipio%>"><%=datosMunicipio[municipio].nombreMunicipio%></option>
+                <% }} %>
+                </select>
+            </div>
+            <div class="col-12" style="margin-top: 10px;">
+                <button type="submit" class="btn btn-primary">Editar</button>
+                <a href="../adminClientes" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

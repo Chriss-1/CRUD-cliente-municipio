@@ -1,0 +1,18 @@
+<%- include('../layout/head.ejs',{Title:"agregarDepartamento"}) %>
+<div class="container" style="width: 50%;">
+    <div style="margin-top: 30px;">
+        <h1>Agregar un nuevo Departamento</h1>
+        <hr>
+    </div>
+    <form method="post" action="agregarDepartamento">
+        <div class="mb-3">
+            <label for="nombreDepartamento" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="nombreDepartamento" placeholder="Nombre del Departamento" name="nombreDepartamento">
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            <a href="adminDepartamentos" class="btn btn-danger">Cancelar</a>
+          </div>
+    </form>
+</div>
+<%- include('../layout/foot.ejs') %>

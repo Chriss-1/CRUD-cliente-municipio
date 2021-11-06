@@ -1,0 +1,55 @@
+<%- include('../layout/head.ejs',{Title:"agregarCliente"}) %>
+<div class="container" style="width: 50%;">
+    <div style="margin-top: 30px;">
+        <h1>Agregar un nuevo Cliente</h1>
+        <hr>
+    </div>
+    <form method="post" action="agregarCliente">
+        <div class="row">
+            <div class="col-6">
+                <label for="nombreCliente" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombreCliente" placeholder="Primer nombre del Cliente" name="nombreCliente">
+            </div>
+            <div class="col-6">
+                <label for="apellidoCliente" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="apellidoCliente" placeholder="Primer apellido del Cliente" name="apellidoCliente">
+            </div>
+        </div>
+
+        <div>
+            <label for="emailCliente" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="emailCliente" placeholder="Correo electrónico del Cliente" name="emailCliente">
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="identidadCliente" class="form-label">Numero de identidad</label>
+                <input oninput="if(value.length>13)value=value.slice(0,13)" type="number" class="form-control" id="identidadCliente" placeholder="0318199800000" name="identidadCliente">
+            </div>
+            <div class="col-6">
+                <label for="telefonoCliente" class="form-label">Telefono</label>
+                <input oninput="if(value.length>8)value=value.slice(0,8)" type="number" class="form-control" id="telefonoCliente" placeholder="99887799" name="telefonoCliente">
+            </div>
+        </div>
+
+        <div class="input-group" style="margin-top: 10px;">
+            <span class="input-group-text">Direccion del cliente</span>
+            <textarea name="direccionCliente" id="direccionCliente" cols="72" rows="5"></textarea>
+        </div>
+        
+        <div>
+            <label for="nombreMunicipio" class="form-label">Municipio</label>
+            <select name="idMunicipio" class="form-select" aria-label="Default select example">
+                <option selected>Seleccione un Municipio</option>
+            <% for( let municipio = 0; municipio < datosMunicipio.length; municipio++ ) { %>
+                    <option value="<%=datosMunicipio[municipio].idMunicipio%>"><%=datosMunicipio[municipio].nombreMunicipio%></option>
+            <% } %>
+            </select>
+        </div>
+        <div class="col-12" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+            <a href="adminClientes" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>
+<%- include('../layout/foot.ejs') %>
